@@ -1,0 +1,20 @@
+npx create-react-app expense-tracking-app --template typescript
+npm install --save react-toastify
+npm install react-bootstrap-icons --save
+npm install react-bootstrap bootstrap@5.1.3
+
+npm install @reduxjs/toolkit
+npm install redux
+npm instal react-redux
+npm install axios
+--npm install redux-logger
+
+
+
+https://gitlab.com/asielalvarez/expenses.frontend/-/blob/master/src/components/ExpenseForm.js
+https://redux-toolkit.js.org/api/createslice
+https://react-redux.js.org/api/hooks
+https://react-redux.js.org/using-react-redux/usage-with-typescript
+https://typeofnan.dev/how-to-use-the-useselector-redux-hook-with-typescript/
+
+
