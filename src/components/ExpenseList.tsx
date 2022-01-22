@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import { Expense } from '../data/common';
+import { ExpenseDetail } from '../data/common';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetExpenses } from '../services/expenses';
 import { RootState } from '../data/store';
@@ -28,7 +28,7 @@ export const ExpenseList: FC = () => {
 
 
 interface ListRowProps {
-    expense: Expense;
+    expense: ExpenseDetail;
 }
 
 
@@ -42,7 +42,7 @@ const ListRow: FC<ListRowProps> = ({ expense }) => {
             }
             <div className="row tableBorder">
                 <div className="col-sm-2">{expense.row}</div>
-                <div className="col-sm-2">{expense.date.toLocaleDateString()}</div>
+                <div className="col-sm-2">{new Date(expense.expdate).toLocaleDateString()}</div>
                 <div className="col-sm-3">{expense.description}</div>
                 <div className="col-sm-3">${expense.amount}</div>
                 <div className="col-sm-2">  <button type="button" className="btn btn-warning" onClick={() => setIsEditing(!isEditing)}>Edit</button></div>

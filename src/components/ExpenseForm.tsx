@@ -1,18 +1,32 @@
-import React, { FormEvent } from 'react'
+import React, { FormEvent, FC } from 'react'
 import { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify'
 import { ExpenseList } from './ExpenseList'
 import { useDispatch } from 'react-redux';
 import { NewExpense } from '../services/expenses';
-import { Expense } from '../data/common';
+import { ExpenseDetail } from '../data/common';
 
-export const ExpenseForm = () => {
+
+interface ExpenseFormProps {
+    //  expense: Expense;
+    //  setIsEditing: Function;
+    title: string
+}
+
+const ExpenseForm: FC<ExpenseFormProps> = ({ title }) => {
+    //const ExpenseForm: FC<ExpenseFormProps> = ({ expense, setIsEditing }) => {
     const descriptions = ["Interest expense", "Depreciations expense", "Delivery expense", "Cleaning expense", "Income tax expense", "Utilities expense", "Labor expense"];
     const [isNewExpense, setIsNewExpense] = useState(true);
     const [description, setDescription] = useState<string>(descriptions[0]);
     const [amount, setAmount] = useState<number>(0);
     const [date, setDate] = useState<Date>();
     const dispatch = useDispatch();
+
+    /*
+    useEffect(() => {
+
+    }, [expense]);
+*/
 
     const onDateChange = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
@@ -31,21 +45,25 @@ export const ExpenseForm = () => {
         if (isNewExpense) {
 
             NewExpense(dispatch, { description: description, amount: amount, date: date });
+            e.currentTarget.reset();
+            //this.myFormRef.reset()
             //    setAmount(0)
             //   setDescription("")
             //setDate(null || undefined)
             // alert(date)
         }
+        else {
+
+        }
     }
 
     return (
         <>
-
             <form onSubmit={onFormSubmit}>
                 <div className="row tableBorder">
                     <div className="col-sm-2">Auto</div>
-                    <div className="col-sm-2"><input className='form-control' type="date" onChange={onDateChange} /></div>
-                    <div className="col-sm-3"><select className='form-control' onChange={onDescriptionChange}>
+                    <div className="col-sm-2"><input required className='form-control' type="date" onChange={onDateChange} /></div>
+                    <div className="col-sm-3"><select required className='form-control' onChange={onDescriptionChange}>
                         <option key={-1}></option>
                         {descriptions.map((d, i) => (
                             <option key={i} value={d}>
@@ -53,7 +71,7 @@ export const ExpenseForm = () => {
                             </option>
                         ))}
                     </select></div>
-                    <div className="col-sm-3"><input className='form-control' type="number" min="0.00" max="100000.00" step="0.01" onChange={onAmountChange} /></div>
+                    <div className="col-sm-3"><input required className='form-control' type="number" min="0.00" max="100000.00" step="0.01" onChange={onAmountChange} /></div>
                     <div className="col-sm-2">
                         <div>
                             {
@@ -72,3 +90,5 @@ export const ExpenseForm = () => {
         </>
     )
 }
+
+export default ExpenseForm;

@@ -1,11 +1,12 @@
-export interface Expense {
+export type ExpenseDetail = {
     id: number;
     row: number;
-    date: Date,
+    expdate: string,
     description: string,
     amount: number
 }
 
-export interface ExpenseState {
-    expense: Expense[]
+export type ExpenseState = {
+    expenses: ExpenseDetail[],
+    title: string
 }

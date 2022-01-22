@@ -1,5 +1,5 @@
 import { createSlice, createAction } from '@reduxjs/toolkit';
-import { Expense } from './common';
+import { ExpenseDetail } from './common';
 
 export const setExpenseError = createAction("setExpenseError");
 export const newExpenseError = createAction("newExpenseError");
@@ -7,15 +7,25 @@ export const editExpenseError = createAction("editExpenseError");
 export const deleteExpenseError = createAction("deleteExpenseError");
 
 export const expensesSlice = createSlice({
-    name: 'expenses',
+    name: 'expense store',
     initialState: {
-        expenses: [] as Expense[],
+        expenses: [] as ExpenseDetail[],
     },
     reducers: {
         newExpense: (state, action) => {
-            console.log("adding");
             return { ...state, expenses: [...action.payload] }
         },
+        /*
+        newExpense: {
+            reducer(state, action) {
+                return { ...state, expenses: [...action.payload] }
+            },
+            prepare(title: string, ex: Expense) {
+                return {
+                    payload: ex,
+                }
+            },
+        },*/
         setExpense: (state, action) => {
             return { ...state, expenses: [...action.payload] };
         },
