@@ -3,6 +3,7 @@ import { ExpenseDetail } from '../data/common';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetExpenses } from '../services/expenses';
 import { RootState } from '../data/store';
+import { XLg, Pencil } from 'react-bootstrap-icons';
 
 export const ExpenseList: FC = () => {
     const dispatch = useDispatch();
@@ -35,6 +36,14 @@ interface ListRowProps {
 const ListRow: FC<ListRowProps> = ({ expense }) => {
     const [isEditing, setIsEditing] = useState(false);
 
+    const amountSizeCss = () => {
+        if (expense.amount <= 100)
+            return "greenAmount";
+        if (expense.amount >= 10000)
+            return "redAmount";
+        return "";
+    }
+
     return (
         <>
             {
@@ -42,10 +51,17 @@ const ListRow: FC<ListRowProps> = ({ expense }) => {
             }
             <div className="row tableBorder">
                 <div className="col-sm-2">{expense.row}</div>
-                <div className="col-sm-2">{new Date(expense.expdate).toLocaleDateString()}</div>
+                <div className="col-sm-2">{new Date(expense.createdAt).toLocaleDateString()}</div>
                 <div className="col-sm-3">{expense.description}</div>
-                <div className="col-sm-3">${expense.amount}</div>
-                <div className="col-sm-2">  <button type="button" className="btn btn-warning" onClick={() => setIsEditing(!isEditing)}>Edit</button></div>
+                <div className="col-sm-3"><span className={amountSizeCss()}>${expense.amount}</span>
+                </div>
+                <div className="col-sm-2">
+                    <button type="button" className="btn btn-info" onClick={() => setIsEditing(!isEditing)}>
+                        <Pencil className='text-default'>x</Pencil></button>&nbsp;
+                    <button type="button" className="btn btn-danger">
+                        <XLg className='text-default'>x</XLg>
+                    </button>
+                </div>
             </div>
             <hr style={{ border: '1px solid grey' }} />
         </>

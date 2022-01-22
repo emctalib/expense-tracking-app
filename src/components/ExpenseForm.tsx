@@ -5,6 +5,7 @@ import { ExpenseList } from './ExpenseList'
 import { useDispatch } from 'react-redux';
 import { NewExpense } from '../services/expenses';
 import { ExpenseDetail } from '../data/common';
+import { PlusLg } from 'react-bootstrap-icons';
 
 
 interface ExpenseFormProps {
@@ -44,7 +45,8 @@ const ExpenseForm: FC<ExpenseFormProps> = ({ title }) => {
         e.preventDefault();
         if (isNewExpense) {
 
-            NewExpense(dispatch, { description: description, amount: amount, date: date });
+
+            NewExpense(dispatch, { description: description, amount: amount, createdAt: date });
             e.currentTarget.reset();
             //this.myFormRef.reset()
             //    setAmount(0)
@@ -75,10 +77,13 @@ const ExpenseForm: FC<ExpenseFormProps> = ({ title }) => {
                     <div className="col-sm-2">
                         <div>
                             {
-                                isNewExpense ? <><button type="submit" className="btn btn-success">Add</button>&nbsp;</> :
+                                isNewExpense ? <>
+
+                                    <button type="submit" className="btn btn-success">
+                                        <PlusLg className='text-default'>+</PlusLg>
+                                    </button>&nbsp;</> :
                                     <>
                                         <button type="submit" className="btn btn-info">Edit</button>&nbsp;
-                                        <button type="button" className="btn btn-danger">Delete</button>
                                         <button type="button" className="btn btn-default">Cancel</button>
                                     </>
                             }

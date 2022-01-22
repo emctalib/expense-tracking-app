@@ -52,3 +52,12 @@ background-color: lightgray;
   overflow-y: scroll;
   height: 70vh;
 }
+
+.greenAmount{
+  background-color: rgba(73, 212, 73, 0.377);
+}
+
+
+.redAmount{
+  background-color: rgb(230, 80, 80);
+}

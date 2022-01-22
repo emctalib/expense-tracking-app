@@ -1,9 +1,13 @@
-export type ExpenseDetail = {
-    id: number;
-    row: number;
-    expdate: string,
+export interface ExpenseBase {
     description: string,
-    amount: number
+    amount: number,
+    createdAt: Date;
+}
+
+export interface ExpenseDetail extends ExpenseBase {
+    id: string;
+    row: number;
+    // createdAt: new Date().toISOString(),
 }
 
 export type ExpenseState = {

@@ -1,10 +1,17 @@
-import { createSlice, createAction } from '@reduxjs/toolkit';
-import { ExpenseDetail } from './common';
+import { createSlice, createAction, PayloadAction, nanoid } from '@reduxjs/toolkit';
+import { ExpenseDetail, ExpenseBase } from './common';
 
 export const setExpenseError = createAction("setExpenseError");
 export const newExpenseError = createAction("newExpenseError");
 export const editExpenseError = createAction("editExpenseError");
 export const deleteExpenseError = createAction("deleteExpenseError");
+
+interface InsertAction {
+    type: "NewExpense",
+    payload: ExpenseDetail
+}
+
+type Action = InsertAction;
 
 export const expensesSlice = createSlice({
     name: 'expense store',
@@ -12,20 +19,29 @@ export const expensesSlice = createSlice({
         expenses: [] as ExpenseDetail[],
     },
     reducers: {
-        newExpense: (state, action) => {
+        newExpense1: (state, action) => {
             return { ...state, expenses: [...action.payload] }
         },
-        /*
+
         newExpense: {
-            reducer(state, action) {
-                return { ...state, expenses: [...action.payload] }
+            reducer: (state, action: PayloadAction<ExpenseDetail>) => {
+                var maxRow = Math.max(...state.expenses.map(b => b.row)) + 1;
+                action.payload.row = maxRow;
+                state.expenses.push(action.payload);
             },
-            prepare(title: string, ex: Expense) {
+            prepare: (expense: ExpenseBase) => {
+                var g1 = expensesSlice.actions;
                 return {
-                    payload: ex,
+                    payload: {
+                        id: nanoid(),
+                        row: 2,
+                        description: expense.description,
+                        amount: expense.amount,
+                        createdAt: expense.createdAt,
+                    } as ExpenseDetail
                 }
             },
-        },*/
+        },
         setExpense: (state, action) => {
             return { ...state, expenses: [...action.payload] };
         },
@@ -42,7 +58,7 @@ export const expensesSlice = createSlice({
                 return expense;
             });
             return { ...state, expenses: [...expenses] };
-        }
+        },
     }
 });
 
