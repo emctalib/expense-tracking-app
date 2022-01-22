@@ -19,7 +19,7 @@ const ExpenseForm: FC<ExpenseFormProps> = ({ title }) => {
     const [isNewExpense, setIsNewExpense] = useState(true);
     const [description, setDescription] = useState<string>(descriptions[0]);
     const [amount, setAmount] = useState<number>(0);
-    const [date, setDate] = useState<Date>();
+    const [date, setDate] = useState<string>();
     const dispatch = useDispatch();
 
     /*
@@ -30,7 +30,7 @@ const ExpenseForm: FC<ExpenseFormProps> = ({ title }) => {
 
     const onDateChange = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
-        setDate(new Date(newValue));
+        setDate(newValue);
     }
     const onAmountChange = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
