@@ -10,6 +10,7 @@ npm install axios
 --npm install redux-logger
 npm install redux-logger 
 npm install immutable
+-- npm install react-confirm-alert --save
 
 
 https://redux.js.org/tutorials/essentials/part-4-using-data
@@ -25,7 +26,6 @@ https://redux-toolkit.js.org/api/serializabilityMiddleware
 https://unpkg.com/@reduxjs/toolkit@1.5.0/src/serializableStateInvariantMiddleware.ts
 https://github.com/DevMonsterProjects/react-redux-typescript/blob/master/src/App/App.tsx
 https://www.youtube.com/watch?v=udr2rx_B99w
-https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers
 https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers
 
 

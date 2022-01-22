@@ -9,13 +9,11 @@ import { PlusLg } from 'react-bootstrap-icons';
 
 
 interface ExpenseFormProps {
-    //  expense: Expense;
-    //  setIsEditing: Function;
-    title: string
+    expense?: ExpenseDetail;
+    setIsEditing?: Function;
 }
 
-const ExpenseForm: FC<ExpenseFormProps> = ({ title }) => {
-    //const ExpenseForm: FC<ExpenseFormProps> = ({ expense, setIsEditing }) => {
+const ExpenseForm: FC<ExpenseFormProps> = ({ expense, setIsEditing }) => {
     const descriptions = ["Interest expense", "Depreciations expense", "Delivery expense", "Cleaning expense", "Income tax expense", "Utilities expense", "Labor expense"];
     const [isNewExpense, setIsNewExpense] = useState(true);
     const [description, setDescription] = useState<string>(descriptions[0]);
@@ -23,11 +21,20 @@ const ExpenseForm: FC<ExpenseFormProps> = ({ title }) => {
     const [date, setDate] = useState<string>();
     const dispatch = useDispatch();
 
-    /*
-    useEffect(() => {
 
+    useEffect(() => {
+        if (expense !== undefined) {
+            setIsNewExpense(false);
+            setAmount(expense.amount);
+            setDescription(expense.description);
+            //   setDate(expense.createdAt);
+            //setAmount
+        }
+        else {
+            setIsNewExpense(true);
+        }
     }, [expense]);
-*/
+
 
     const onDateChange = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
@@ -44,19 +51,19 @@ const ExpenseForm: FC<ExpenseFormProps> = ({ title }) => {
     const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (isNewExpense) {
-
-
             NewExpense(dispatch, { description: description, amount: amount, createdAt: date });
             e.currentTarget.reset();
-            //this.myFormRef.reset()
-            //    setAmount(0)
-            //   setDescription("")
-            //setDate(null || undefined)
-            // alert(date)
         }
         else {
-
+            //edit here
+            if (setIsEditing != undefined)
+                setIsEditing(false);
         }
+    }
+
+    const onCancelClick = () => {
+        if (setIsEditing != undefined)
+            setIsEditing(false);
     }
 
     return (
@@ -84,7 +91,7 @@ const ExpenseForm: FC<ExpenseFormProps> = ({ title }) => {
                                     </button>&nbsp;</> :
                                     <>
                                         <button type="submit" className="btn btn-info">Edit</button>&nbsp;
-                                        <button type="button" className="btn btn-default">Cancel</button>
+                                        <button type="button" className="btn btn-default" onClick={onCancelClick}>Cancel</button>
                                     </>
                             }
                         </div>
