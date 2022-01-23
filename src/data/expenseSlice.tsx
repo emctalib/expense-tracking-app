@@ -34,7 +34,7 @@ export const expensesSlice = createSlice({
                 return {
                     payload: {
                         id: nanoid(),
-                        row: 2,
+                        row: 0,
                         description: expense.description,
                         amount: expense.amount,
                         createdAt: expense.createdAt,
@@ -58,6 +58,22 @@ export const expensesSlice = createSlice({
                 return expense;
             });
             return { ...state, expenses: [...expenses] };
+        },
+        editExpense1: {
+            reducer: (state, action: PayloadAction<ExpenseDetail>) => {
+                state.expenses.push(action.payload);
+            },
+            prepare: (expense: ExpenseBase) => {
+                return {
+                    payload: {
+                        id: nanoid(),
+                        row: 0,
+                        description: expense.description,
+                        amount: expense.amount,
+                        createdAt: expense.createdAt,
+                    } as ExpenseDetail
+                }
+            },
         },
     }
 });

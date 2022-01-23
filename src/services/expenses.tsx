@@ -1064,3 +1064,11 @@ export const DeleteExpense = async (dispatch: any, expense: any) => {
     }
 }
 
+export const EditExpense = async (dispatch: any, expense: any) => {
+    try {
+        dispatch(editExpense(expense));
+    }
+    catch {
+        dispatch(setExpenseError());
+    }
+}

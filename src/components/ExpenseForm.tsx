@@ -1,12 +1,13 @@
 import React, { FormEvent, FC } from 'react'
 import { useState, useEffect } from 'react';
 import { ToastContainer } from 'react-toastify'
-import { ExpenseList } from './ExpenseList'
+import { ExpenseRowList } from './ExpenseRowList'
 import { useDispatch } from 'react-redux';
-import { NewExpense } from '../services/expenses';
+import { EditExpense, NewExpense } from '../services/expenses';
 import { ExpenseDetail } from '../data/common';
 import { PlusLg } from 'react-bootstrap-icons';
-
+import moment from "moment";
+import DateInput from './DateInput';
 
 interface ExpenseFormProps {
     expense?: ExpenseDetail;
@@ -14,31 +15,30 @@ interface ExpenseFormProps {
 }
 
 const ExpenseForm: FC<ExpenseFormProps> = ({ expense, setIsEditing }) => {
-    const descriptions = ["Interest expense", "Depreciations expense", "Delivery expense", "Cleaning expense", "Income tax expense", "Utilities expense", "Labor expense"];
+    const expenseTypes = ["Interest expense", "Depreciation expense", "Delivery expense", "Cleaning expense", "Income tax expense", "Utilities expense", "Labor expense"];
+    const [rowNumber, setRowNumber] = useState<number>(0);
     const [isNewExpense, setIsNewExpense] = useState(true);
-    const [description, setDescription] = useState<string>(descriptions[0]);
-    const [amount, setAmount] = useState<number>(0);
-    const [date, setDate] = useState<string>();
+    const [description, setDescription] = useState<string>("");
+    const [amount, setAmount] = useState<number>();
+    const [date, setDate] = useState<Date>();
     const dispatch = useDispatch();
-
 
     useEffect(() => {
         if (expense !== undefined) {
             setIsNewExpense(false);
             setAmount(expense.amount);
             setDescription(expense.description);
-            //   setDate(expense.createdAt);
-            //setAmount
+            setDate(expense.createdAt);
+            setRowNumber(expense.row);
         }
         else {
             setIsNewExpense(true);
         }
     }, [expense]);
 
-
-    const onDateChange = (e: React.FormEvent<HTMLInputElement>) => {
+    const onChaneDateHandler = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
-        setDate(newValue);
+        setDate(new Date(newValue));
     }
     const onAmountChange = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
@@ -55,9 +55,11 @@ const ExpenseForm: FC<ExpenseFormProps> = ({ expense, setIsEditing }) => {
             e.currentTarget.reset();
         }
         else {
-            //edit here
-            if (setIsEditing != undefined)
+
+            if (setIsEditing != undefined && expense != undefined) {
+                EditExpense(dispatch, { id: expense.id, description: description, amount: amount, createdAt: date });
                 setIsEditing(false);
+            }
         }
     }
 
@@ -70,17 +72,23 @@ const ExpenseForm: FC<ExpenseFormProps> = ({ expense, setIsEditing }) => {
         <>
             <form onSubmit={onFormSubmit}>
                 <div className="row tableBorder">
-                    <div className="col-sm-2">Auto</div>
-                    <div className="col-sm-2"><input required className='form-control' type="date" onChange={onDateChange} /></div>
-                    <div className="col-sm-3"><select required className='form-control' onChange={onDescriptionChange}>
+                    <div className="col-sm-2">
+                        {rowNumber == 0 ? "Auto" : rowNumber}
+                    </div>
+                    <div className="col-sm-2">
+                        <DateInput selectedDate={date} onDateChange={onChaneDateHandler}></DateInput>
+                    </div>
+                    <div className="col-sm-3"><select required className='form-control' onChange={onDescriptionChange} value={description}>
                         <option key={-1}></option>
-                        {descriptions.map((d, i) => (
+                        {expenseTypes.map((d, i) => (
                             <option key={i} value={d}>
                                 {d}
                             </option>
                         ))}
                     </select></div>
-                    <div className="col-sm-3"><input required className='form-control' type="number" min="0.00" max="100000.00" step="0.01" onChange={onAmountChange} /></div>
+                    <div className="col-sm-3">
+                        <input required className='form-control' value={amount} type="number" min="0.00" max="100000.00" step="0.01" onChange={onAmountChange} />
+                    </div>
                     <div className="col-sm-2">
                         <div>
                             {
@@ -102,5 +110,7 @@ const ExpenseForm: FC<ExpenseFormProps> = ({ expense, setIsEditing }) => {
         </>
     )
 }
+
+
 
 export default ExpenseForm;

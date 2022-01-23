@@ -1,7 +1,7 @@
 import React from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import ExpenseForm from './ExpenseForm'
-import { ExpenseList } from './ExpenseList'
+import { ExpenseRowList } from './ExpenseRowList'
 import 'react-toastify/dist/ReactToastify.css'
 
 export const Home = () => {
@@ -23,7 +23,7 @@ export const Home = () => {
                     <ExpenseForm />
                     <hr style={{ border: '1px solid grey' }} />
                     <div className='scrollDiv'>
-                        <ExpenseList />
+                        <ExpenseRowList />
                     </div>
                 </div>
             </div>
