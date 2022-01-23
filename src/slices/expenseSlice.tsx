@@ -6,13 +6,6 @@ export const newExpenseError = createAction("newExpenseError");
 export const editExpenseError = createAction("editExpenseError");
 export const deleteExpenseError = createAction("deleteExpenseError");
 
-interface InsertAction {
-    type: "NewExpense",
-    payload: ExpenseDetail
-}
-
-type Action = InsertAction;
-
 export const expensesSlice = createSlice({
     name: 'expense store',
     initialState: {

@@ -32,3 +32,15 @@ export class LoginUserInfo implements ILoginUserInfo {
         this.username = userName;
     }
 }
+
+export type LoginInfo = {
+    token: string,
+    isLoggedIn: boolean
+}
+
+
+export type LoginState = {
+    username: string;
+    password: string;
+    submitted: boolean;
+}

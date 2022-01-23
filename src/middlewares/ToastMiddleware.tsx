@@ -1,7 +1,7 @@
 import {
     newExpense, editExpense, deleteExpense, setExpense,
     setExpenseError, newExpenseError, editExpenseError, deleteExpenseError
-} from "../data/expenseSlice";
+} from "../slices/expenseSlice";
 import { toast } from 'react-toastify';
 
 const ToastMiddleware = () => (next: any) => (action: any) => {

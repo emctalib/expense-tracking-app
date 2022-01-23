@@ -1,8 +1,8 @@
 import {
     newExpense, editExpense, deleteExpense, setExpense,
     setExpenseError, newExpenseError, editExpenseError, deleteExpenseError
-} from "../data/expenseSlice";
-import { ExpenseDetail } from '../data/common';
+} from "../slices/expenseSlice";
+import { ExpenseDetail } from '../slices/common';
 
 
 const json = `[{"id":1,"row":1,"description":"Cleaning expense","amount":5422.7,"createdAt":"07/12/2021"},

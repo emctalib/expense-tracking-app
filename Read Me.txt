@@ -31,5 +31,8 @@ https://unpkg.com/@reduxjs/toolkit@1.5.0/src/serializableStateInvariantMiddlewar
 https://github.com/DevMonsterProjects/react-redux-typescript/blob/master/src/App/App.tsx
 https://www.youtube.com/watch?v=udr2rx_B99w
 https://redux.js.org/tutorials/fundamentals/part-3-state-actions-reducers
-
-
+https://www.johnraptis.dev/using-redux-with-classes-and-hooks/
+https://github.com/jquense/yup
+https://serverless-stack.com/chapters/redirect-on-login-and-logout.html
+https://serverless-stack.com/chapters/give-feedback-while-logging-in.html
+https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications

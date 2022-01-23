@@ -4,7 +4,7 @@ import { ToastContainer } from 'react-toastify'
 import { ExpenseRowList } from './ExpenseRowList'
 import { useDispatch } from 'react-redux';
 import { EditExpense, NewExpense } from '../../services/expenses';
-import { ExpenseDetail } from '../../data/common';
+import { ExpenseDetail } from '../../slices/common';
 import { PlusLg } from 'react-bootstrap-icons';
 import moment from "moment";
 import DateInput from './DateInput';
