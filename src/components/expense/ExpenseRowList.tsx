@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react'
-import { ExpenseDetail } from '../data/common';
+import { ExpenseDetail } from '../../data/common';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetExpenses, DeleteExpense } from '../services/expenses';
-import { RootState } from '../data/store';
+import { GetExpenses, DeleteExpense } from '../../services/expenses';
+import { RootState } from '../../data/store';
 import { XLg, Pencil } from 'react-bootstrap-icons';
 import ExpenseForm from './ExpenseForm';
 import { ExpenseRowItem } from './ExpenseRowItem';

@@ -1,44 +1,16 @@
 import React from 'react'
-import { ToastContainer, toast } from 'react-toastify'
-import ExpenseForm from './ExpenseForm'
-import { ExpenseRowList } from './ExpenseRowList'
-import 'react-toastify/dist/ReactToastify.css'
 
 export const Home = () => {
     return (
         <>
-            <div style={{ width: '70%', margin: 'auto' }}>
-                <h1><u>Expense Tracking</u></h1>
-
-                <hr style={{ border: '1px solid grey' }} />
-                <div>
-                    <div className="row tableBorder">
-                        <div className="col-sm-2 bg-dark text-light"><h5>#</h5></div>
-                        <div className="col-sm-2 bg-dark text-light"><h5>Date</h5></div>
-                        <div className="col-sm-3 bg-dark text-light"><h5>Description</h5></div>
-                        <div className="col-sm-3 bg-dark text-light"><h5>Amount</h5></div>
-                        <div className="col-sm-2 bg-dark text-light"><h5>Action</h5></div>
+            <div className='container pt-4'>
+                <div className="jumbotron">
+                    <div className="container">
+                        <h1 className="display-3">Hello, programmers!</h1>
+                        <p>This is my learning application designed in react. There are multiple modules. Please follow the menu link.</p>
+                        <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more »</a></p>
                     </div>
-                    <hr style={{ border: '1px solid grey' }} />
-                    <ExpenseForm />
-                    <hr style={{ border: '1px solid grey' }} />
-                    <div className='scrollDiv'>
-                        <ExpenseRowList />
-                    </div>
-                </div>
-            </div>
-            <ToastContainer
-                position="top-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-            />
-            <ToastContainer />
+                </div></div>
         </>
     )
 }

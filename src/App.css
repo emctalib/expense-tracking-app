@@ -50,7 +50,7 @@ background-color: lightgray;
 
 .scrollDiv{
   overflow-y: scroll;
-  height: 70vh;
+  height: calc(100vh - 42vh);
 }
 
 .greenAmount{
@@ -60,4 +60,48 @@ background-color: lightgray;
 
 .redAmount{
   background-color: rgb(230, 80, 80);
+}
+
+
+.panelMargin{
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.loadingPannel{
+  width: 10rem; 
+  height: 10rem;
+}
+
+.loadingPannelMargin{
+  margin-top: 250px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.jumbotron {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: 0.3rem;
+}
+
+
+.sidebar-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 48px; /* Height of navbar */
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 }

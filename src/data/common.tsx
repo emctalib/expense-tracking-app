@@ -14,3 +14,21 @@ export type ExpenseState = {
     expenses: ExpenseDetail[],
     title: string
 }
+
+export interface ILoginUserInfo {
+    id: number;
+    fullName: string;
+    username: string;
+}
+
+export class LoginUserInfo implements ILoginUserInfo {
+    id: number;
+    fullName: string;
+    username: string;
+
+    constructor(id: number, fullName: string, userName: string) {
+        this.id = id;
+        this.fullName = fullName;
+        this.username = userName;
+    }
+}
