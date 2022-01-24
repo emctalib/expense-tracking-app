@@ -37,5 +37,3 @@ https://serverless-stack.com/chapters/redirect-on-login-and-logout.html
 https://serverless-stack.com/chapters/give-feedback-while-logging-in.html
 https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
 https://www.cluemediator.com/login-app-create-login-form-in-reactjs-using-secure-rest-api
-https://codesandbox.io/s/login-logout-with-react-router-dtmfs?from-embed=&file=/src/components/ProtectedRoute.js
-https://github.com/openscript/react-router-private-protected-routes/blob/react-router-6/src/containers/App.tsx

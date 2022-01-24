@@ -1,14 +1,17 @@
 import React, { Component, FC } from 'react'
-import { NavLink } from "react-router-dom";
+import { NavLink, Navigate } from "react-router-dom";
 import { Subtract } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { LoginState } from '../slices/common';
 import { Login as LoginServ } from '../services/authentication';
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+
 
 const Login: FC = () => {
 
+    const navigate = useNavigate()
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [isSubmiting, setIsSubmiting] = useState<boolean>(false);
@@ -27,6 +30,7 @@ const Login: FC = () => {
         setIsSubmiting(true);
         LoginServ(dispatch, { username: username, password: password, submitted: isSubmiting } as LoginState);
         toast.info("Welcome to system");
+        navigate("/");
     }
 
     return (

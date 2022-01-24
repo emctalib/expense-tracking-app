@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from "react";
-import { Route, Navigate, useLocation, RouteProps } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 interface PropType {
     component: React.FC;
@@ -7,7 +7,11 @@ interface PropType {
 }
 
 const ProtectedRoute: FC<PropType> = ({ component: Component, isAuthenticated }) => {
-    if (isAuthenticated) return <Component />;
+    console.log("isAuthenticated1:" + isAuthenticated);
+    if (isAuthenticated)
+        return <Component />;
+
+    console.log("isAuthenticated2:" + isAuthenticated);
     return <Navigate to='/login' />;
 };
 export default ProtectedRoute;

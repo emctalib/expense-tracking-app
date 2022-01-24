@@ -18,8 +18,14 @@ export const authenticationSlice = createSlice({
                 }
             }
         },
-        logout: () => {
+        logout: (state) => {
             sessionStorage.clear();
+            return {
+                ...state, ...{
+                    token: "",
+                    isLoggedIn: false,
+                }
+            }
         }
     }
 });

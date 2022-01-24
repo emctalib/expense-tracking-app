@@ -8,24 +8,21 @@ import { Route, Navigate, useNavigate } from 'react-router-dom';
 export const Logoff = () => {
     const dispatch = useDispatch();
     const [isLogedOff, setIsLogedOff] = useState<boolean>(false)
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     useEffect(() => {
-        /*
+
         const timer = setTimeout(() => {
-           
-        }, 1000);*/
-        LogOffServ(dispatch);
-        setIsLogedOff(true);
-        //  navigate("/login");
+            LogOffServ(dispatch);
+            setIsLogedOff(true);
+            navigate("/login");
+        }, 1000)
+
     }, []);
 
     return (
         <div>
             <h5>You are being loged off.....</h5>
-            {
-                //isLogedOff ? <Navigate to={"/"}></Navigate > : ""
-            }
         </div>
     )
 }

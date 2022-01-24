@@ -14,7 +14,7 @@ export const Login = async (dispatch: any, credentials: LoginState) => {
 export const AlreadyLogin = async (dispatch: any) => {
     try {
         const token = sessionStorage.getItem("_authToken");
-        if (token !== undefined && token != null) {
+        if (token !== undefined && token != null && token != "") {
             // Page is refreshed so, we need to pull token and add to store.
             dispatch(userAuthenticated(token));
         }
