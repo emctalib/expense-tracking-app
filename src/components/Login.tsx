@@ -11,7 +11,7 @@ const Login: FC = () => {
 
     const [username, setUsername] = useState<string>("");
     const [password, setPassword] = useState<string>("");
-    const [submitted, setSubmitted] = useState<boolean>(false);
+    const [isSubmiting, setIsSubmiting] = useState<boolean>(false);
     const dispatch = useDispatch();
 
     const onUsernameChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -24,8 +24,8 @@ const Login: FC = () => {
     }
     const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setSubmitted(true);
-        LoginServ(dispatch, { username: username, password: password, submitted: true } as LoginState);
+        setIsSubmiting(true);
+        LoginServ(dispatch, { username: username, password: password, submitted: isSubmiting } as LoginState);
         toast.info("Welcome to system");
     }
 
@@ -41,20 +41,20 @@ const Login: FC = () => {
 
                                         <h3 className="mb-5">Sign in to continue</h3>
                                         <Subtract className='mb-4' style={{ fontSize: "5em" }} />
-                                        <div className={'input-group mb-4' + (submitted && !username ? ' has-error' : '')}>
+                                        <div className={'input-group mb-4' + (isSubmiting && !username ? ' has-error' : '')}>
                                             <span className="input-group-text" id="basic-addon1">Username</span>
                                             <input type="text" required className="form-control" name="username" placeholder="type username..."
                                                 value={username} onChange={onUsernameChange} />
-                                            {submitted && !username &&
+                                            {isSubmiting && !username &&
                                                 <div className="help-block">Username is required</div>
                                             }
                                         </div>
 
-                                        <div className={'input-group mb-4' + (submitted && !password ? ' has-error' : '')}>
+                                        <div className={'input-group mb-4' + (isSubmiting && !password ? ' has-error' : '')}>
                                             <span className="input-group-text" id="basic-addon1">Password&nbsp;</span>
                                             <input type="password" required className="form-control" name="password" placeholder="type password..."
                                                 value={password} onChange={onPasswordChange} />
-                                            {submitted && !password &&
+                                            {isSubmiting && !password &&
                                                 <div className="help-block">Password is required</div>
                                             }
                                         </div>
@@ -69,7 +69,7 @@ const Login: FC = () => {
                                             <label className="form-check-label" htmlFor="cbRememberMe"> Remember password </label>
                                         </div>
 
-                                        <button className="btn btn-primary btn-lg btn-g" type="submit">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                                        <input className="btn btn-primary btn-lg btn-g" type="submit" disabled={isSubmiting} value={isSubmiting ? "logining...." : "Login"} />
 
                                         <hr className="my-4" />
                                         <div>
