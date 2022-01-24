@@ -31,13 +31,18 @@ export const Layout: FC<LayoutProps> = ({ isLoggedIn }) => {
                                     </li>
                                     <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                                         <span>Expenses</span>
-
                                     </h6>
                                     <li className="nav-item">
                                         <NavLink to="/expense" className="nav-link"><CardList></CardList>&nbsp;Tracking</NavLink>
                                     </li>
                                     <li className="nav-item">
                                         <NavLink to="/expense" className="nav-link"><CardList></CardList>&nbsp;Types</NavLink>
+                                    </li>
+                                    <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                        <span>Manage Todos</span>
+                                    </h6>
+                                    <li className="nav-item">
+                                        <NavLink to="/todo" className="nav-link"><CardList></CardList>&nbsp;Todo</NavLink>
                                     </li>
                                 </ul>
                             </div>

@@ -4,11 +4,15 @@ import { LoginState } from "../slices/common";
 
 export const Login = async (dispatch: any, credentials: LoginState) => {
     try {
-        dispatch(userAuthenticated("1234343242"));
+        if (credentials.username == "admin" && credentials.password == "admin") {
+            dispatch(userAuthenticated("1234343242"));
+            return true;
+        }
     }
     catch {
         console.log("Error: unable to login user");
     }
+    return false;
 }
 
 export const AlreadyLogin = async (dispatch: any) => {

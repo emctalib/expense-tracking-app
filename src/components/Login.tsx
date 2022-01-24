@@ -12,8 +12,8 @@ import { useNavigate } from "react-router-dom";
 const Login: FC = () => {
 
     const navigate = useNavigate()
-    const [username, setUsername] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+    const [username, setUsername] = useState<string>("admin");
+    const [password, setPassword] = useState<string>("admin");
     const [isSubmiting, setIsSubmiting] = useState<boolean>(false);
     const dispatch = useDispatch();
 
@@ -25,12 +25,21 @@ const Login: FC = () => {
         const newValue = e.currentTarget.value;
         setPassword(newValue);
     }
+
     const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
         setIsSubmiting(true);
-        LoginServ(dispatch, { username: username, password: password, submitted: isSubmiting } as LoginState);
-        toast.info("Welcome to system");
-        navigate("/");
+        LoginServ(dispatch, { username: username, password: password, submitted: isSubmiting } as LoginState).then((result) => {
+            if (result) {
+                setIsSubmiting(false);
+                toast.info("Welcome to system");
+                navigate("/");
+            }
+            else {
+                setIsSubmiting(false);
+                toast.info("Unable to login. Either username or password is invalid.");
+            }
+        });
+        e.preventDefault();
     }
 
     return (
@@ -74,7 +83,6 @@ const Login: FC = () => {
                                         </div>
 
                                         <input className="btn btn-primary btn-lg btn-g" type="submit" disabled={isSubmiting} value={isSubmiting ? "logining...." : "Login"} />
-
                                         <hr className="my-4" />
                                         <div>
                                             <p className="mb-0">Don't have an account? <NavLink to="/register" className="btn btn-link">Register</NavLink></p>
