@@ -37,3 +37,4 @@ https://serverless-stack.com/chapters/redirect-on-login-and-logout.html
 https://serverless-stack.com/chapters/give-feedback-while-logging-in.html
 https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
 https://www.cluemediator.com/login-app-create-login-form-in-reactjs-using-secure-rest-api
+https://github.com/aruzo1/todo-react-redux?ref=reactjsexample.com

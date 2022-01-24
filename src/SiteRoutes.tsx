@@ -9,6 +9,7 @@ import { Route, Routes, BrowserRouter, NavLink, Link } from 'react-router-dom';
 import { Home } from './components/Home';
 
 import ProtectedRoute from './ProtectedRoute';
+import { TodoContainer } from './components/todo/TodoContainer';
 
 interface SiteRoutesProps {
     isLoggedIn: boolean;
@@ -25,9 +26,10 @@ export const SiteRoutes: FC<SiteRoutesProps> = ({ isLoggedIn }) => {
                         <Route path='home' element={<ProtectedRoute isAuthenticated={isLoggedIn} component={Home} />} />
                         <Route path='expense' element={<ProtectedRoute isAuthenticated={isLoggedIn} component={Expenses} />} />
 
-                        <Route path="login" element={(isLoggedIn ? <>{console.log("home loaded")}<Home /></> : <Login />)} />
+                        <Route path="login" element={(isLoggedIn ? <Home /> : <Login />)} />
                         <Route path="logoff" element={(isLoggedIn ? <Logoff /> : <Login />)} />
                         <Route path="register" element={(isLoggedIn ? <Home /> : <Register />)} />
+                        <Route path="todo" element={(isLoggedIn ? <TodoContainer /> : <Login />)} />
                         <Route path="*" element={<NoPage />} />
                     </Route>
                 </Routes>

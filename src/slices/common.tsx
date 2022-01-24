@@ -44,3 +44,10 @@ export type LoginState = {
     password: string;
     submitted: boolean;
 }
+
+export interface TodoDataItem {
+    id: number;
+    text: string;
+    dateAdded: Date;
+    completed: boolean;
+}
