@@ -7,14 +7,20 @@ import { XLg, Pencil } from 'react-bootstrap-icons';
 import ExpenseForm from './ExpenseForm';
 import { ExpenseRowItem } from './ExpenseRowItem';
 
-export const ExpenseRowList: FC = () => {
-    const dispatch = useDispatch();
-    const expenses = useSelector((state: RootState) => state.expensesSlice.expenses);
+interface ExpenseRowListProps {
+    expenses: ExpenseDetail[];
+}
 
+export const ExpenseRowList: FC<ExpenseRowListProps> = ({ expenses }) => {
+    //const dispatch = useDispatch();
+    //const expenses = useSelector((state: RootState) => state.expensesSlice.expenses);
+
+    /*
     useEffect(() => {
         console.log("rendering ExpenseRowList.");
         GetExpenses(dispatch);
     }, []); //[] param to control when component will rerender. it will not render as its blank array.
+*/
 
     return <>
         {

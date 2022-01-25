@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Expenses } from './components/expense/Expenses';
+import { ExpenseContainer } from './components/expense/ExpenseContainer';
 import Login from './components/Login';
 import { Register } from './components/Register';
 import { NoPage } from './components/NoPage';
@@ -24,7 +24,7 @@ export const SiteRoutes: FC<SiteRoutesProps> = ({ isLoggedIn }) => {
                     <Route path="/" element={<Layout isLoggedIn={isLoggedIn} />} >
                         <Route index element={<ProtectedRoute isAuthenticated={isLoggedIn} component={Home} />} />
                         <Route path='home' element={<ProtectedRoute isAuthenticated={isLoggedIn} component={Home} />} />
-                        <Route path='expense' element={<ProtectedRoute isAuthenticated={isLoggedIn} component={Expenses} />} />
+                        <Route path='expense' element={<ProtectedRoute isAuthenticated={isLoggedIn} component={ExpenseContainer} />} />
 
                         <Route path="login" element={(isLoggedIn ? <Home /> : <Login />)} />
                         <Route path="logoff" element={(isLoggedIn ? <Logoff /> : <Login />)} />
