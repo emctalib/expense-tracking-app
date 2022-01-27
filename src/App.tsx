@@ -1,32 +1,46 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, createContext } from 'react';
 import './App.css';
 
-import { LoginUserInfo } from './slices/common';
+import { LoginInfo, SiteTheme } from './slices/common';
 import { useSelector, useDispatch } from 'react-redux';
-import { AlreadyLogin as AlreadyLoginServ } from './services/authentication';
+import { AlreadyLogin as AlreadyLoginServ, CheckAlreadyLogin } from './services/authentication';
 import { RootState } from './slices/store';
 import SiteRoutes from './SiteRoutes';
+import ThemeProvider from './ThemeProvider';
 
 function App() {
   //const isCompLoaded = useRef<boolean>(false);
   const [isCompLoaded, setIsCompLoaded] = useState<boolean>(false);
   const dispatch = useDispatch();
-  const currentUser = new LoginUserInfo(1, "John Amy", "john@example.com");
+  const [currentUser, setCurrentUser] = useState<LoginInfo>({ fullName: "", token: "", isLoggedIn: false } as LoginInfo)
   const { isLoggedIn } = useSelector((state: RootState) => state.authenticationSlice);
+  const UserContext = createContext(null);
+  const initTheme = SiteTheme.classic;
+  const saveUser = (value: LoginInfo) => {
+    setCurrentUser(value)
+  }
 
+  const saveUser1 = (value: LoginInfo) => {
+    setCurrentUser(value)
+  }
   useEffect(() => {
     AlreadyLoginServ(dispatch);
+    let user = CheckAlreadyLogin();
+    if (user !== undefined && user !== null) {
+      setCurrentUser(user);
+    }
+
     setIsCompLoaded(true);
   }, [])
 
   return (
     <>
       <main className="flex-shrink-1">
-        {isCompLoaded ? <SiteRoutes isLoggedIn={isLoggedIn} /> : "wait...."}
+        <ThemeProvider theme={initTheme}>
+          {isCompLoaded ? <SiteRoutes isLoggedIn={isLoggedIn} /> : "wait...."}
+        </ThemeProvider>
       </main>
-      <footer className="footer mt-auto py-3 bg-dark">
-        <span className="text-muted text-right">@Copyright 2022.</span>
-      </footer>
+
     </>
   );
 }

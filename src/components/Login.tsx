@@ -8,13 +8,13 @@ import { Login as LoginServ } from '../services/authentication';
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 
-
 const Login: FC = () => {
 
     const navigate = useNavigate()
     const [username, setUsername] = useState<string>("admin");
     const [password, setPassword] = useState<string>("admin");
     const [isSubmiting, setIsSubmiting] = useState<boolean>(false);
+
     const dispatch = useDispatch();
 
     const onUsernameChange = (e: React.FormEvent<HTMLInputElement>) => {
@@ -36,7 +36,7 @@ const Login: FC = () => {
             }
             else {
                 setIsSubmiting(false);
-                toast.info("Unable to login. Either username or password is invalid.");
+                toast.error("Unable to login. Either username or password is invalid.");
             }
         });
         e.preventDefault();

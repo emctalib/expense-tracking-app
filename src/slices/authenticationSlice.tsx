@@ -3,7 +3,9 @@ import { LoginInfo } from './common';
 
 const initialState: LoginInfo = {
     token: '',
-    isLoggedIn: false
+    isLoggedIn: false,
+    fullName: '',
+    username: ''
 }
 export const authenticationSlice = createSlice({
     name: 'authentication',

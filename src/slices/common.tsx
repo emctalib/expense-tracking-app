@@ -1,3 +1,5 @@
+import CSS from 'csstype';
+
 export interface ExpenseBase {
     description: string,
     amount: number,
@@ -34,6 +36,8 @@ export class LoginUserInfo implements ILoginUserInfo {
 }
 
 export type LoginInfo = {
+    username: string,
+    fullName: string,
     token: string,
     isLoggedIn: boolean
 }
@@ -51,3 +55,61 @@ export interface TodoDataItem {
     dateAdded: Date;
     completed: boolean;
 }
+
+
+export enum SiteTheme {
+    classic,
+    light,
+    dark
+
+}
+
+export class ThemeGenerator {
+    static getTheme = (theme: SiteTheme): ThemeItems => {
+        switch (theme) {
+            case SiteTheme.classic:
+                return {
+                    Header: {
+                        backgroundColor: 'lightblue'
+                    },
+                    Footer: {
+                        backgroundColor: 'lightblue'
+                    },
+                    Title: {
+                        color: 'white'
+                    }
+                } as ThemeItems;
+            case SiteTheme.light:
+                return {
+                    Header: {
+                        backgroundColor: 'lightgray'
+                    },
+                    Footer: {
+                        backgroundColor: 'lightgray'
+                    },
+                    Title: {
+                        color: '#212529'
+                    }
+                } as ThemeItems;
+            case SiteTheme.dark:
+                return {
+                    Header: {
+                        backgroundColor: '#212529'
+                    },
+                    Footer: {
+                        backgroundColor: '#212529'
+                    },
+                    Title: {
+                        color: 'white'
+                    }
+                } as ThemeItems;
+        }
+    }
+}
+
+export interface ThemeItems {
+    Header: CSS.Properties;
+    Footer: CSS.Properties;
+    Title: CSS.Properties;
+}
+

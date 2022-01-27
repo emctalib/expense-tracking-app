@@ -1,25 +1,29 @@
 import React, { FC } from 'react'
 import { Outlet, NavLink } from "react-router-dom";
-
+import { ThemeGenerator, SiteTheme } from '../slices/common';
 import { Subtract, CardList, House } from 'react-bootstrap-icons';
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer, toast } from 'react-toastify'
+import { useTheme } from '../ThemeProvider';
 
 interface LayoutProps {
     isLoggedIn: boolean;
 }
 
 export const Layout: FC<LayoutProps> = ({ isLoggedIn }) => {
+    const [theme, setTheme] = useTheme();
+    const themeDetail = ThemeGenerator.getTheme(theme);
+
     return (
         <>
             {isLoggedIn ?
                 <>
-                    <nav className="navbar navbar-dark bg-dark">
-                        <NavLink to="/" className="navbar-brand">
+                    <nav className="navbar navbar-dark bg-dark1" style={themeDetail.Header}>
+                        <NavLink to="/" className="navbar-brand" style={themeDetail.Title}>
                             <Subtract className='fs-3' />&nbsp;Expense Tracking System</NavLink>
                         <div>
-                            <a className="navbar-brand">john@example.com</a>
-                            <NavLink to="/logoff" className="navbar-brand">Logoff</NavLink>
+                            <a className="navbar-brand" style={themeDetail.Title}>john@example.com</a>
+                            <NavLink to="/logoff" className="navbar-brand" style={themeDetail.Title}>Logoff</NavLink>
                         </div>
                     </nav>
                     <div className="row">
@@ -44,6 +48,14 @@ export const Layout: FC<LayoutProps> = ({ isLoggedIn }) => {
                                     <li className="nav-item">
                                         <NavLink to="/todo" className="nav-link"><CardList></CardList>&nbsp;Todo</NavLink>
                                     </li>
+                                    <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                        <span>Theme</span>
+                                    </h6>
+                                    <li className="nav-item">
+                                        <NavLink to="/home" onClick={() => setTheme(SiteTheme.classic)} className="nav-link"><CardList></CardList>&nbsp;Classic</NavLink>
+                                        <NavLink to="/home" onClick={() => setTheme(SiteTheme.light)} className="nav-link"><CardList></CardList>&nbsp;Light</NavLink>
+                                        <NavLink to="/home" onClick={() => setTheme(SiteTheme.dark)} className="nav-link"><CardList></CardList>&nbsp;Dark</NavLink>
+                                    </li>
                                 </ul>
                             </div>
                         </nav>
@@ -51,6 +63,9 @@ export const Layout: FC<LayoutProps> = ({ isLoggedIn }) => {
                             <Outlet />
                         </main>
                     </div>
+                    <footer className="footer mt-auto py-3 bg-dark1" style={themeDetail.Header}>
+                        <span className="text-muted text-right" style={themeDetail.Title}>@Copyright 2025.</span>
+                    </footer>
                 </>
                 :
                 <>
@@ -63,6 +78,9 @@ export const Layout: FC<LayoutProps> = ({ isLoggedIn }) => {
                         </div>
                     </nav>
                     <Outlet />
+                    <footer className="footer mt-auto py-3 bg-dark">
+                        <span className="text-muted text-right">@Copyright 2022.</span>
+                    </footer>
                 </>
             }
             <ToastContainer
