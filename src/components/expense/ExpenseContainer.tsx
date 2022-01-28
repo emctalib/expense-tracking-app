@@ -46,7 +46,8 @@ export const ExpenseContainer = () => {
                         <div className='scrollDiv'>
                             <ExpenseRowList expenses={expenses} />
                         </div>
-                    </div>   <ExpenseGraph expenses={expenses}></ExpenseGraph>
+                    </div>
+                    <ExpenseGraph expenses={expenses}></ExpenseGraph>
                 </div>
 
             </div>

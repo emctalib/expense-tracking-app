@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, Suspense } from 'react';
 import { ExpenseContainer } from './components/expense/ExpenseContainer';
 import Login from './components/Login';
 import { Register } from './components/Register';

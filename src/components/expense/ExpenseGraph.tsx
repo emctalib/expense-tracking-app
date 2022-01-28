@@ -22,7 +22,7 @@ export const ExpenseGraph: FC<Props> = ({ expenses }) => {
         res[value.description].amount += value.amount;
         return res;
     }, {});
-    console.log("graph loaded.")
+
     /*
     const groupBy = (xs: any, key: any) => {
         return xs.reduce(function (rv: any, x: any) {
@@ -63,9 +63,6 @@ export const ExpenseGraph: FC<Props> = ({ expenses }) => {
     return <>
         <div>
             <Pie data={data} />
-            {
-                sumByType.map(item => item.amount).reduce((prev, next) => prev + next)
-            }
         </div>
     </>;
 };

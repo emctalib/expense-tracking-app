@@ -6,7 +6,6 @@ interface LoadingSpinnerProps {
 }
 
 const LoadingSpinner: FC<LoadingSpinnerProps> = ({ isLoading }) => {
-    console.log("loading:" + isLoading)
     return (
         <div className='loadingPannelMargin'>
             <div className="d-flex flex-column align-items-center justify-content-center" >
@@ -24,4 +23,4 @@ const LoadingSpinner: FC<LoadingSpinnerProps> = ({ isLoading }) => {
     )
 }
 
-export default LoadingSpinner;
+export default React.memo(LoadingSpinner);
