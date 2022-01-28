@@ -23,7 +23,6 @@ export const TodoContainer = () => {
             item.id = maxId + 1;
             item.dateAdded = new Date("1/1/2019");
             item.completed = false;
-
             setData(data => [item, ...data])
         }
     }
@@ -37,13 +36,26 @@ export const TodoContainer = () => {
 
     const markCompletedItemHandler = (id: number) => {
         if (data !== undefined) {
-            setData(data => data.map((d) => {
-                if (d.id == id) {
-                    var b = !d.completed;
-                    d.completed = b;
-                }
-                return d;
-            }));
+            // 1. Make a shallow copy of the items
+            let items = [...data];
+            // 2. Make a shallow copy of the item you want to mutate
+            let item = { ...items[items.findIndex((t) => t.id == id)] };
+            // 3. Replace the property you're intested in
+            item.completed = !item.completed;
+            // 4. Put it back into our array. N.B. we *are* mutating the array here, but that's why we made a copy first
+            items[items.findIndex((t) => t.id == id)] = item;
+            // 5. Set the state to our new copy
+            setData(items);
+
+
+            /* // OR following code
+                        setData(data => data.map((d) => {
+                            if (d.id == id) {
+                                var b = !d.completed;
+                                d.completed = b;
+                            }
+                            return d;
+                        }));*/
 
         }
     }

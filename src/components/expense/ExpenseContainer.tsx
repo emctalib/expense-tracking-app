@@ -3,8 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetExpenses, DeleteExpense } from '../../services/expenses';
 import { RootState } from '../../slices/store';
 import ExpenseForm from './ExpenseForm';
+import { ExpenseGraph } from './ExpenseGraph';
 import { ExpenseRowList } from './ExpenseRowList';
 import { ExpenseTotal } from './ExpenseTotal'
+import { GraphDown } from 'react-bootstrap-icons';
 
 export const ExpenseContainer = () => {
     const dispatch = useDispatch();
@@ -22,8 +24,11 @@ export const ExpenseContainer = () => {
                     <div className='row'>
                         <div className='col-sm-8'><h2>Expense Tracking</h2></div>
                         <div className='col-sm-4'><div className='text-end'>
-                            <ExpenseTotal expenses={expenses} ></ExpenseTotal>
-                        </div></div>
+                            <ExpenseTotal expenses={expenses} ></ExpenseTotal>&nbsp;
+
+                        </div>
+                        </div>
+
                     </div>
 
                     <hr style={{ border: '1px solid grey' }} />
@@ -41,9 +46,11 @@ export const ExpenseContainer = () => {
                         <div className='scrollDiv'>
                             <ExpenseRowList expenses={expenses} />
                         </div>
-                    </div>
+                    </div>   <ExpenseGraph expenses={expenses}></ExpenseGraph>
                 </div>
+
             </div>
+
         </>
     )
 }
