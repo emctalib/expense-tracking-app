@@ -2,7 +2,7 @@ import React, { Component, FC } from 'react'
 import { NavLink, Navigate } from "react-router-dom";
 import { Subtract } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { LoginState } from '../slices/common';
 import { Login as LoginServ } from '../services/authentication';
 import { toast } from 'react-toastify';
@@ -14,8 +14,10 @@ const Login: FC = () => {
     const [username, setUsername] = useState<string>("admin");
     const [password, setPassword] = useState<string>("admin");
     const [isSubmiting, setIsSubmiting] = useState<boolean>(false);
-
+    const userNameElement = useRef<HTMLInputElement>(null);
     const dispatch = useDispatch();
+
+    useEffect(() => { userNameElement.current?.focus() }, [])
 
     const onUsernameChange = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
@@ -56,7 +58,7 @@ const Login: FC = () => {
                                         <Subtract className='mb-4' style={{ fontSize: "5em" }} />
                                         <div className={'input-group mb-4' + (isSubmiting && !username ? ' has-error' : '')}>
                                             <span className="input-group-text" id="basic-addon1">Username</span>
-                                            <input type="text" required className="form-control" name="username" placeholder="type username..."
+                                            <input type="text" ref={userNameElement} required className="form-control" name="username" placeholder="type username..."
                                                 value={username} onChange={onUsernameChange} />
                                             {isSubmiting && !username &&
                                                 <div className="help-block">Username is required</div>

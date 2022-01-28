@@ -7,7 +7,7 @@ import { Layout } from './components/Layout';
 import { Logoff } from './components/Logoff';
 import { Route, Routes, BrowserRouter, NavLink, Link } from 'react-router-dom';
 import { Home } from './components/Home';
-
+import { Planner } from './components/planner/Planner';
 import ProtectedRoute from './ProtectedRoute';
 import { TodoContainer } from './components/todo/TodoContainer';
 
@@ -30,6 +30,7 @@ export const SiteRoutes: FC<SiteRoutesProps> = ({ isLoggedIn }) => {
                         <Route path="logoff" element={(isLoggedIn ? <Logoff /> : <Login />)} />
                         <Route path="register" element={(isLoggedIn ? <Home /> : <Register />)} />
                         <Route path="todo" element={(isLoggedIn ? <TodoContainer /> : <Login />)} />
+                        <Route path="planner" element={(isLoggedIn ? <Planner /> : <Login />)} />
                         <Route path="*" element={<NoPage />} />
                     </Route>
                 </Routes>

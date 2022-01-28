@@ -56,6 +56,12 @@ export const Layout: FC<LayoutProps> = ({ isLoggedIn }) => {
                                         <NavLink to="/home" onClick={() => setTheme(SiteTheme.light)} className="nav-link"><CardList></CardList>&nbsp;Light</NavLink>
                                         <NavLink to="/home" onClick={() => setTheme(SiteTheme.dark)} className="nav-link"><CardList></CardList>&nbsp;Dark</NavLink>
                                     </li>
+                                    <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                        <span>Planner</span>
+                                    </h6>
+                                    <li className="nav-item">
+                                        <NavLink to="/planner" className="nav-link"><CardList></CardList>&nbsp;Planner</NavLink>
+                                    </li>
                                 </ul>
                             </div>
                         </nav>

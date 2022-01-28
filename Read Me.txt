@@ -16,6 +16,24 @@ npm install moment
 npm i react-router-dom
 npm install uuid
 
+npm install @fluentui/react
+--npm i @fluentui/react-northstar
+
+
+
+
+useState: save state in component
+useContext/createContext: use to save/share global state.
+
+useRef [useRef is a hook that allows to directly create a reference to the DOM element in the functional component]
+createRef work same as useRef but use in class component React.createRef()
+createRef=>useRef
+class=>function
+createRef hook creates a new reference
+useRef hook will return the same reference
+useRef hold current value which is mutable value and dont cause render.
+
+
 
 
 https://redux.js.org/tutorials/essentials/part-4-using-data
@@ -39,3 +57,6 @@ https://serverless-stack.com/chapters/give-feedback-while-logging-in.html
 https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
 https://www.cluemediator.com/login-app-create-login-form-in-reactjs-using-secure-rest-api
 https://github.com/aruzo1/todo-react-redux?ref=reactjsexample.com
+https://www.telerik.com/blogs/usecallback-useref-two-react-hooks-you-should-learn
+https://www.geeksforgeeks.org/how-to-develop-user-registration-form-in-reactjs/
+https://www.w3schools.com/react/react_usecallback.asp
