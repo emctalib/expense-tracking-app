@@ -19,12 +19,16 @@ npm install --save react-chartjs-2 chart.js
 
 --npm install @fluentui/react
 --npm i @fluentui/react-northstar
+npm test
 
 
-
-
+babel=>jsx compiler to javascript
 useState: save state in component
 useContext/createContext: use to save/share global state.
+
+/*********************/
+children prop => <div a="a prop" b="b prop">children contents</div>
+/*********************/
 
 useRef [useRef is a hook that allows to directly create a reference to the DOM element in the functional component]
 createRef work same as useRef but use in class component React.createRef()
@@ -33,6 +37,45 @@ class=>function
 createRef hook creates a new reference
 useRef hook will return the same reference
 useRef hold current value which is mutable value and dont cause render.
+
+/*********************/
+useReducer hook: use for complex state instead useState.
+It is like redux but part of react. u can say smaller than redux
+/*********************/
+React.suspense.....
+React.lazy = const OtherComponent = React.lazy(() => import('./OtherComponent'));
+https://reactjs.org/docs/code-splitting.html
+/*********************/
+useEffect =componentDidMount componentDidUpdate componentWillUnmount 
+/*********************/
+useLayoutEffect
+/*********************/
+React.PureComponent
+/*********************/
+dangerouslySetInnerHTML
+use html as string then put in some div
+/*********************/
+error boundary
+/*********************/
+<React.Fragment>
+wrap contents with Fragment or <></>
+/*********************/
+ReactDOM.createPortal
+Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+/*********************/
+useEffect(() => {
+  setName('John');
+}, [name]
+...
+class Button extends React.Component{
+
+  constructor(props) {
+    super(props);
+    // Missing line
+  }
+
+  handleClick() {...}
+}
 
 
 https://reactjs.org/docs/react-api.html
@@ -62,3 +105,4 @@ https://github.com/aruzo1/todo-react-redux?ref=reactjsexample.com
 https://www.telerik.com/blogs/usecallback-useref-two-react-hooks-you-should-learn
 https://www.geeksforgeeks.org/how-to-develop-user-registration-form-in-reactjs/
 https://www.w3schools.com/react/react_usecallback.asp
+https://dev.to/spukas/3-reasons-to-usereducer-over-usestate-43ad

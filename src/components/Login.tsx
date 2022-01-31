@@ -7,6 +7,7 @@ import { LoginState } from '../slices/common';
 import { Login as LoginServ } from '../services/authentication';
 import { toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+import FencyButton from '../FencyButton/FencyButton';
 
 const Login: FC = () => {
 
@@ -84,7 +85,7 @@ const Login: FC = () => {
                                             <label className="form-check-label" htmlFor="cbRememberMe"> Remember password </label>
                                         </div>
 
-                                        <input className="btn btn-primary btn-lg btn-g" type="submit" disabled={isSubmiting} value={isSubmiting ? "logining...." : "Login"} />
+                                        <FencyButton label="Login" isDisabled={isSubmiting} disabledText='logining....'></FencyButton>
                                         <hr className="my-4" />
                                         <div>
                                             <p className="mb-0">Don't have an account? <NavLink to="/register" className="btn btn-link">Register</NavLink></p>

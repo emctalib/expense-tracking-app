@@ -1,0 +1,8 @@
+.fency{
+border-color: red;
+border-width: 2px;
+}
+
+.fency:hover{
+    background-color: red;
+    }

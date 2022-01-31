@@ -5,6 +5,7 @@ import { Subtract, CardList, House } from 'react-bootstrap-icons';
 import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer, toast } from 'react-toastify'
 import { useTheme } from '../ThemeProvider';
+import { Family } from './learning/Family';
 
 interface LayoutProps {
     isLoggedIn: boolean;
@@ -61,6 +62,12 @@ export const Layout: FC<LayoutProps> = ({ isLoggedIn }) => {
                                     </h6>
                                     <li className="nav-item">
                                         <NavLink to="/planner" className="nav-link"><CardList></CardList>&nbsp;Planner</NavLink>
+                                    </li>
+                                    <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                                        <span>Learning</span>
+                                    </h6>
+                                    <li className="nav-item">
+                                        <NavLink to="/family" className="nav-link"><CardList></CardList>&nbsp;Learning# 1</NavLink>
                                     </li>
                                 </ul>
                             </div>
