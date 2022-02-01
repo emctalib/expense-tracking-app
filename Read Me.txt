@@ -73,6 +73,8 @@ use html as string then put in some div
 /*********************/
 error boundary
 /*********************/
+React.Profier: is tool to check profiling times of component. e.g. loading
+/*********************/
 <React.Fragment>
 wrap contents with Fragment or <></>
 /*********************/
@@ -93,6 +95,7 @@ class Button extends React.Component{
   handleClick() {...}
 }
 
+https://www.npmjs.com/package/react-error-boundary
 https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/error_boundaries/
 https://reactjs.org/docs/error-boundaries.html
 https://reactjs.org/docs/react-api.html

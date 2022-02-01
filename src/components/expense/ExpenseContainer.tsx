@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, Profiler, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { GetExpenses, DeleteExpense } from '../../services/expenses';
 import { RootState } from '../../slices/store';
@@ -17,8 +17,26 @@ export const ExpenseContainer = () => {
         GetExpenses(dispatch);
     }, []); //[] param to control when component will rerender. it will not render as its blank array.
 
+    const onRenderCallback = (
+        id: any, // the "id" prop of the Profiler tree that has just committed
+        phase: any, // either "mount" (if the tree just mounted) or "update" (if it re-rendered)
+        actualDuration: any, // time spent rendering the committed update
+        baseDuration: any, // estimated time to render the entire subtree without memoization
+        startTime: any, // when React began rendering this update
+        commitTime: any, // when React committed this update
+        interactions: any// the Set of interactions belonging to this update
+    ) => {
+        //  console.log("Profiling:", id, phase, actualDuration, startTime, commitTime, interactions);
+        console.log(`Profiling: ${id}'s ${phase} phase:`);
+        console.log(`Profiling: Actual time: ${actualDuration}`);
+        console.log(`Profiling: Base time: ${baseDuration}`);
+        console.log(`Profiling: Start time: ${startTime}`);
+        console.log(`Profiling: Commit time: ${commitTime}`);
+    }
+
     return (
         <>
+            <Profiler id="expense" onRender={onRenderCallback}></Profiler>
             <div className='container'>
                 <div className='pt-3 jumbotron'>
                     <div className='row'>
