@@ -24,6 +24,10 @@ npm install react-icons --save
 --npm i @fluentui/react-northstar
 npm test
 npm install --save-dev webpack-merge
+npm install --save-dev mini-css-extract-plugin
+npm run build
+
+
 
 
 babel=>jsx compiler to javascript

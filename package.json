@@ -58,6 +58,7 @@
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.21",
+    "mini-css-extract-plugin": "^2.5.3",
     "webpack-merge": "^5.8.0"
   }
 }
