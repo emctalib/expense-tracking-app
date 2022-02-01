@@ -7,6 +7,7 @@ import { AlreadyLogin as AlreadyLoginServ, CheckAlreadyLogin } from './services/
 import { RootState } from './slices/store';
 import SiteRoutes from './SiteRoutes';
 import ThemeProvider from './ThemeProvider';
+import ScrollButton from './components/ScrollButton';
 
 function App() {
   //const isCompLoaded = useRef<boolean>(false);
@@ -40,7 +41,7 @@ function App() {
           {isCompLoaded ? <SiteRoutes isLoggedIn={isLoggedIn} /> : "wait...."}
         </ThemeProvider>
       </main>
-
+      <ScrollButton></ScrollButton>
     </>
   );
 }

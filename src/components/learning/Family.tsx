@@ -11,7 +11,7 @@ export const Family = () => {
 
     return (
         <React.Fragment>
-            → Family Component rendered.<br></br>
+            → Family Component rendered.<br></br><br></br>
             <GrandParent></GrandParent>
         </React.Fragment>
     );

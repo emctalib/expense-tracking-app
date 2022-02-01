@@ -17,9 +17,13 @@ npm i react-router-dom
 npm install uuid
 npm install --save react-chartjs-2 chart.js
 
+npm i --save-dev @types/styled-components
+npm install react-icons --save
+
 --npm install @fluentui/react
 --npm i @fluentui/react-northstar
 npm test
+npm install --save-dev webpack-merge
 
 
 babel=>jsx compiler to javascript
@@ -48,7 +52,15 @@ https://reactjs.org/docs/code-splitting.html
 /*********************/
 useEffect =componentDidMount componentDidUpdate componentWillUnmount 
 /*********************/
-useLayoutEffect
+useLayoutEffect : it is same as useEffect but is synchronous before changes pain in browser. it fires synchronously after all DOM mutations. Use this to read layout from the DOM and synchronously re-render.
+example: u dont want to show changes to user until completed.
+/*********************/
+useMemo: useMemo will only recompute the memoized value when one of the dependencies has changed.
+/*********************/
+useCallback: //useCallback: useCallback will return a memoized version of the callback that only changes if one of the dependencies has changed. Pass an inline callback and an array of dependencies.
+this hook will call when u call from some function only. use like const.
+example: learning2 components in code
+The useCallback and useMemo Hooks are similar. The main difference is that useMemo returns a memoized value and useCallback returns a memoized function
 /*********************/
 React.PureComponent
 /*********************/
@@ -77,7 +89,8 @@ class Button extends React.Component{
   handleClick() {...}
 }
 
-
+https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/error_boundaries/
+https://reactjs.org/docs/error-boundaries.html
 https://reactjs.org/docs/react-api.html
 https://reactjs.org/docs/concurrent-mode-suspense.html
 https://www.samanthaming.com/tidbits/70-3-ways-to-clone-objects/

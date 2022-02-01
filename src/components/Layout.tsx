@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer, toast } from 'react-toastify'
 import { useTheme } from '../ThemeProvider';
 import { Family } from './learning/Family';
+import { Home as Learning2 } from '../components/learning2/Home';
 
 interface LayoutProps {
     isLoggedIn: boolean;
@@ -68,6 +69,12 @@ export const Layout: FC<LayoutProps> = ({ isLoggedIn }) => {
                                     </h6>
                                     <li className="nav-item">
                                         <NavLink to="/family" className="nav-link"><CardList></CardList>&nbsp;Learning# 1</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink to="/learning2" className="nav-link"><CardList></CardList>&nbsp;Learning# 2</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink to="/errorhome" className="nav-link"><CardList></CardList>&nbsp;Learning# 3</NavLink>
                                     </li>
                                 </ul>
                             </div>
